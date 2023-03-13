@@ -33,7 +33,7 @@ class App extends React.Component<any, any> {
               key={i}
               model={task}
               onDelete={()=>this.deleteTask(i)}
-              onEdit={(task)=>this.onTaskEdit(i, task)}
+              onChange={(task)=>this.onTaskChange(i, task)}
             />
           )}
           <section id="add">
@@ -64,9 +64,12 @@ class App extends React.Component<any, any> {
     })
   }
 
-  onTaskEdit(i: number, task: Task){
+  onTaskChange(i: number, task: Task){
     let taskModels = this.state.taskModels;
+    
     taskModels[i].desc = task.state.desc;
+    taskModels[i].done = task.state.done;
+
     this.setLocalStorage(this.state.taskModels);
   }
 }

@@ -8,13 +8,13 @@ class Task extends React.Component<any, any> {
       done: props.model.done,
       desc: props.model.desc,
       onDelete: props.onDelete,
-      onEdit: props.onEdit,
+      onChange: props.onChange,
     };
   }
 
   onTaskDescEdit(e) {
     this.setState({desc: e.target.value}, ()=>{
-      this.state.onEdit(this);
+      this.state.onChange(this);
     });
   }
 
@@ -29,7 +29,9 @@ class Task extends React.Component<any, any> {
   }
 
   onCheckChange(e) {
-    this.setState({done: e.target.value});
+    this.setState({done: e.target.value}, ()=>{
+      this.state.onChange(this);
+    });
   }
 
 }
