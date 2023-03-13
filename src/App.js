@@ -36,11 +36,16 @@ class Task extends React.Component {
   render() {
     return (
       <section key={this.key}>
-        <input type="checkbox" defaultChecked={this.state.done}></input>
+        <input type="checkbox" defaultChecked={this.state.done} onChange={(e) => this.onCheckChange(e)}></input>
         <input type="text" value={this.state.desc} onChange={(e) => this.onTaskDescEdit(e)}></input>
       </section>
     )
   }
+
+  onCheckChange(e) {
+    this.setState({done: e.target.value});
+  }
+
 }
 function App() {
   let taskModels = [
