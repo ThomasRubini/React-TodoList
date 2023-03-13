@@ -28,10 +28,10 @@ class App extends React.Component<any, any> {
     return (
       <div className="App">
         <section id="tasks">
-          { this.state.taskModels.map((task, i) =>
+          { this.state.taskModels.map((taskModel, i) =>
             <Task
-              key={task.key}
-              model={task}
+              key={taskModel.key}
+              model={taskModel}
               onDelete={()=>this.deleteTask(i)}
               onChange={(task)=>this.onTaskChange(i, task)}
             />
