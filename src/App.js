@@ -47,21 +47,32 @@ class Task extends React.Component {
   }
 
 }
-function App() {
-  let taskModels = [
-    new TaskModel(true, "Some random task"),
-    new TaskModel(false, "Finishing this app")
-  ];
-  return (
-    <div className="App">
-      <section id="tasks">
-        { taskModels.map((task, i) => <Task key={i} model={task}></Task>)}
-        <section id="add">
-          <button>Add new task</button>
+
+class App extends React.Component {
+
+  constructor(){
+    super();
+
+    this.state = {
+      taskModels: [
+        new TaskModel(true, "Some random task"),
+        new TaskModel(false, "Finishing this app")
+      ]
+    }
+  }
+  
+  render(){
+    return (
+      <div className="App">
+        <section id="tasks">
+          { this.state.taskModels.map((task, i) => <Task key={i} model={task}></Task>)}
+          <section id="add">
+            <button>Add new task</button>
+          </section>
         </section>
-      </section>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default App;
