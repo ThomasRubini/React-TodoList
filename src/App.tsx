@@ -9,18 +9,33 @@ class App extends React.Component<any, any> {
     super(props);
 
     this.state = {
-      taskModels: [
-        new TaskModel(true, "Some random task"),
-        new TaskModel(false, "Finishing this app")
-      ]
+      taskModels: this.getLocalStorage()
     }
   }
   
+  getLocalStorage() : Array<TaskModel> {
+    let tasksStr = localStorage.getItem("tasks");
+    if(!tasksStr)return [];
+
+    return JSON.parse(tasksStr);
+  }
+
+  setLocalStorage(tasksModels: Array<TaskModel>) {
+    localStorage.setItem("tasks", JSON.stringify(tasksModels));
+  }
+
   render(){
     return (
       <div className="App">
         <section id="tasks">
-          { this.state.taskModels.map((task, i) => <Task key={i} model={task} onDelete={()=>this.deleteTask(i)}/>)}
+          { this.state.taskModels.map((task, i) =>
+            <Task
+              key={i}
+              model={task}
+              onDelete={()=>this.deleteTask(i)}
+              onEdit={(task)=>this.onTaskEdit(i, task)}
+            />
+          )}
           <section id="add">
             <button onClick={(e)=>this.addNewTask(e)}>Add new task</button>
           </section>
@@ -32,6 +47,8 @@ class App extends React.Component<any, any> {
   addNewTask(e){
     let taskModels = this.state.taskModels;
     taskModels.push(new TaskModel());
+
+    this.setLocalStorage(taskModels);
     this.setState({
       taskModels: taskModels
     })
@@ -40,9 +57,17 @@ class App extends React.Component<any, any> {
   deleteTask(i: number){
     let taskModels = this.state.taskModels;
     taskModels.splice(i, 1);
+
+    this.setLocalStorage(taskModels);
     this.setState({
       taskModels: taskModels
     })
+  }
+
+  onTaskEdit(i: number, task: Task){
+    let taskModels = this.state.taskModels;
+    taskModels[i].desc = task.state.desc;
+    this.setLocalStorage(this.state.taskModels);
   }
 }
 

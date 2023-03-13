@@ -8,11 +8,14 @@ class Task extends React.Component<any, any> {
       done: props.model.done,
       desc: props.model.desc,
       onDelete: props.onDelete,
+      onEdit: props.onEdit,
     };
   }
 
   onTaskDescEdit(e) {
-    this.setState({desc: e.target.value});
+    this.setState({desc: e.target.value}, ()=>{
+      this.state.onEdit(this);
+    });
   }
 
   render() {
