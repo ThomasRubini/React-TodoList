@@ -17,7 +17,7 @@ class App extends React.Component<any, any> {
     let tasksStr = localStorage.getItem("tasks");
     if(!tasksStr)return [];
 
-    return JSON.parse(tasksStr);
+    return JSON.parse(tasksStr).map((object, i) => new TaskModel(object.done, object.desc));
   }
 
   setLocalStorage(tasksModels: Array<TaskModel>) {
@@ -30,7 +30,7 @@ class App extends React.Component<any, any> {
         <section id="tasks">
           { this.state.taskModels.map((task, i) =>
             <Task
-              key={i}
+              key={task.key}
               model={task}
               onDelete={()=>this.deleteTask(i)}
               onChange={(task)=>this.onTaskChange(i, task)}
@@ -57,6 +57,8 @@ class App extends React.Component<any, any> {
   deleteTask(i: number){
     let taskModels = this.state.taskModels;
     taskModels.splice(i, 1);
+
+    console.log(taskModels);
 
     this.setLocalStorage(taskModels);
     this.setState({
