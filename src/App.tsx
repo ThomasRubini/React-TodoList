@@ -20,7 +20,7 @@ class App extends React.Component<any, any> {
     return (
       <div className="App">
         <section id="tasks">
-          { this.state.taskModels.map((task, i) => <Task model={task}/>)}
+          { this.state.taskModels.map((task, i) => <Task key={i} model={task}/>)}
           <section id="add">
             <button>Add new task</button>
           </section>
