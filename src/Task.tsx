@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-class Task extends React.Component {
+class Task extends React.Component<any> {
 
   state: any;
 

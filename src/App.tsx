@@ -1,12 +1,14 @@
 import * as React from 'react';
 import './App.css';
-import Task from './Task.tsx';
-import TaskModel from './TaskModel.ts';
+import Task from './Task';
+import TaskModel from './TaskModel';
 
 class App extends React.Component {
 
-  constructor(){
-    super();
+  state: any;
+
+  constructor(props: any){
+    super(props);
 
     this.state = {
       taskModels: [
@@ -20,7 +22,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <section id="tasks">
-          { this.state.taskModels.map((task, i) => <Task key={i} model={task}></Task>)}
+          { this.state.taskModels.map((task, i) => <Task model={task}/>)}
           <section id="add">
             <button>Add new task</button>
           </section>
