@@ -3,9 +3,7 @@ import './App.css';
 import Task from './Task';
 import TaskModel from './TaskModel';
 
-class App extends React.Component {
-
-  state: any;
+class App extends React.Component<any, any> {
 
   constructor(props: any){
     super(props);

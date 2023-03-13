@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-class Task extends React.Component<any> {
-
-  state: any;
+class Task extends React.Component<any, any> {
 
   constructor(props: any){
     super(props);
