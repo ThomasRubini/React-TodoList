@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "esModuleInterop": true,
+      "strict": false,
+      "noFallthroughCasesInSwitch": true,
+      "jsx": "react-jsx"
+    },
+    "include": [
+      "src"
+    ]
+}
+  
