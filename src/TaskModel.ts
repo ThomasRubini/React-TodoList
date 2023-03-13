@@ -4,8 +4,8 @@ class TaskModel{
   desc: string
 
   constructor(done: boolean, desc: string){
-    this.done = done, 'boolean';
-    this.desc = desc, 'string';
+    this.done = done;
+    this.desc = desc;
   }
 }
 
