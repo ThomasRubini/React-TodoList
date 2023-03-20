@@ -4,10 +4,10 @@
       "esModuleInterop": true,
       "strict": false,
       "noFallthroughCasesInSwitch": true,
+      "moduleResolution": "node",
       "jsx": "react-jsx"
     },
     "include": [
       "src"
     ]
 }
-  
